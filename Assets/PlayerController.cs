@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             Vector3 curRotation = Vector3.left * rightStickInput.x + Vector3.forward * rightStickInput.z;
             Quaternion playerRotation = Quaternion.LookRotation(curRotation, Vector3.up);
 
-            rb.transform.s(playerRotation);
+            rb.MoveRotation(playerRotation);
         }
         
     }
