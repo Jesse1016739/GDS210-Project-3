@@ -11,17 +11,29 @@ public class PlayerController : MonoBehaviour
     private Vector3 leftStickInput;
     private Vector3 rightStickInput;
 
+    public GameObject bulletSpawn;
+    public GameObject bullet;
+    public float fireRate;
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         GetPlayerInput();
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(bullet, bulletSpawn.transform);
+            Debug.Log("Fired");
+        }
     }
 
     private void GetPlayerInput()
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
             rb.MoveRotation(playerRotation);
         }
-        
     }
+    
+
 }
