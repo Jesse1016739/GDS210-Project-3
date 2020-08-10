@@ -7,6 +7,8 @@ TagManager:
   - BulletSpawn
   - Enemy
   - Wall
+  - Spawner
+  - Cutscene
   layers:
   - Default
   - TransparentFX
