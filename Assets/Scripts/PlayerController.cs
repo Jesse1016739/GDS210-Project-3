@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletSpawn;
     public GameObject bullet;
     public float fireRate;
+
+    public bool isWalking = false;
     
 
 
@@ -32,8 +34,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(bullet, bulletSpawn.transform);
+
+
+
             Debug.Log("Fired");
         }
+
+        
     }
 
     private void GetPlayerInput()
@@ -47,10 +54,29 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 curMovement = leftStickInput * playerSpeed * Time.deltaTime;
         rb.velocity = curMovement;
+
+        
+        if(rb.velocity.x > 0 || rb.velocity.x < 0 || 
+           rb.velocity.z > 0 || rb.velocity.z < 0)
+        {
+            isWalking = true;
+        }
+
+        else
+        {
+            isWalking = false;
+            //FindObjectOfType<AudioManager>().Play("WalkingSound");
+
+        }
+
+        if (isWalking == true)
+        {
+        }
+
         //Debug.Log(rb.velocity);
         //Debug.Log(curMovement);
 
-        if(rightStickInput.magnitude > 0f)
+        if (rightStickInput.magnitude > 0f)
         {
             Vector3 curRotation = Vector3.left * rightStickInput.x + Vector3.forward * rightStickInput.z;
             Quaternion playerRotation = Quaternion.LookRotation(curRotation, Vector3.up);

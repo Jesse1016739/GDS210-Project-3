@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletRb = gameObject.GetComponent<Rigidbody>();
+        //FindObjectOfType<AudioManager>().Play("Gunshot");
     }
 
     void Update()

@@ -35,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
         if (maxMet == true && enemyCount == 0)
         {
             maxMet = false;
+            //FindObjectOfType<AudioManager>().Play("FlyingColours");
             StartCoroutine(Spawning());
         }
 
